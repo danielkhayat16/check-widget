@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Widget Chèque Digital</title>
+    <script type="module" src="./src/main.js"></script>
+</head>
+
+<body>
+    <div id="cheque-widget-container"></div>
+    <script type="module">
+        import '../src/main.js';
+        window.initChequeWidget({
+            chequeId: "123456",
+            authToken: "demo-token"
+        });
+    </script>
+</body>
+
+</html>

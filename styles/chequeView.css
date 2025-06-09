@@ -1,0 +1,295 @@
+/* Import Google Fonts for a modern look */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+body {
+    background: linear-gradient(135deg, #e0f2f7 0%, #c1e0e0 100%); /* Soft, modern background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Modern sans-serif font */
+    color: #333;
+}
+
+.cheque-form-cheque {
+    max-width: 580px; /* Slightly wider for better layout */
+    margin: 40px auto;
+    background: #ffffff;
+    border: 1px solid #e0e0e0; /* Softer border */
+    border-radius: 18px; /* More rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04); /* More pronounced, layered shadow */
+    padding: 40px 45px 30px 45px; /* Increased padding */
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    overflow: hidden; /* For pseudo-element background */
+}
+
+/* Subtle background pattern for authenticity */
+.cheque-form-cheque::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 10L100 10M0 90L100 90M10 0L10 100M90 0L90 100" stroke="%23f5f5f5" stroke-width="0.5"/%3E%3C/svg%3E');
+    background-size: 25px 25px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cheque-form-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px; /* Increased gap */
+    align-items: flex-start;
+    margin-bottom: 30px; /* More space below header */
+    padding-bottom: 15px; /* Little internal padding */
+    border-bottom: 1px dashed #cfd8dc; /* Lighter dashed border */
+    position: relative; /* Ensure it's above pseudo-element */
+    z-index: 1;
+}
+
+/* Bank name styling */
+.cheque-form-header-left::before {
+    content: 'Banque Moderne'; /* Example bank name */
+    font-family: 'Playfair Display', serif; /* Elegant serif font for bank name */
+    font-size: 2.6em; /* Larger, more impactful */
+    font-weight: 700;
+    color: #0056b3; /* A strong, modern blue */
+    display: block;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.cheque-form-header-left::after {
+    content: '123 Avenue de l\'Innovation, 75001 Paris'; /* Example address */
+    font-size: 0.85em;
+    color: #607d8b; /* Muted grey blue */
+    display: block;
+    margin-top: 5px;
+}
+
+
+.cheque-form-header-right {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.9em;
+    color: #607d8b;
+}
+
+.cheque-form-header-right label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.cheque-form-header-right input[type="text"] { /* Styling for cheque number */
+    background-color: #f0f4f7;
+    border: 1px solid #dbe2e9;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-align: right;
+    width: 150px;
+    color: #3f51b5; /* A distinct blue for numbers */
+    margin-top: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+
+.cheque-form-label {
+    display: block;
+    margin-bottom: 12px; /* Slightly less margin as inputs handle spacing */
+    color: #3f51b5; /* Modern blue */
+    font-weight: 600; /* Bolder for prominence */
+    font-size: 1.05em; /* Slightly larger */
+    letter-spacing: 0.02em; /* Tighter letter spacing */
+}
+
+.cheque-form-input,
+.cheque-form-amount {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #b0bec5; /* Slightly thicker, softer grey */
+    background: transparent;
+    font-size: 1.15em; /* Larger text for readability */
+    padding: 8px 4px 6px 0; /* More padding */
+    margin-top: 4px; /* More space from label */
+    outline: none;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+    color: #263238; /* Darker text for better contrast */
+}
+.cheque-form-input:focus,
+.cheque-form-amount:focus {
+    border-bottom: 2px solid #0056b3; /* Focus color for inputs */
+    box-shadow: 0 1px 0 rgba(0, 86, 179, 0.2); /* Subtle shadow on focus */
+}
+.cheque-form-input::placeholder {
+    color: #90a4ae; /* Lighter placeholder text */
+    font-style: italic;
+}
+
+.cheque-form-amount {
+    font-size: 1.7em; /* Significantly larger for amount */
+    color: #0056b3; /* Stronger blue for financial figures */
+    text-align: right;
+    font-weight: 700; /* Extra bold */
+    margin-top: 5px;
+    padding-right: 10px; /* Space for currency symbol */
+}
+
+/* Container for amount and currency symbol */
+.amount-wrapper {
+    display: flex;
+    align-items: flex-end;
+    border: 2px solid #a8dadc; /* Light teal border */
+    background-color: #f0fafa; /* Very light teal background */
+    border-radius: 10px;
+    padding: 8px 15px;
+    box-shadow: inset 0 1px 5px rgba(0,0,0,0.05);
+    margin-top: 15px; /* Space from previous field */
+}
+
+.currency-symbol {
+    font-size: 1.7em;
+    font-weight: 700;
+    color: #0056b3;
+    margin-left: 5px;
+    margin-bottom: 2px; /* Align with text baseline */
+}
+
+
+.cheque-form-signature-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; /* Align elements to the bottom */
+    margin-top: 40px; /* More space above signature */
+    margin-bottom: 25px; /* More space below signature */
+    position: relative;
+    z-index: 1;
+}
+
+/* Placeholder for signature line */
+.signature-line {
+    width: 280px; /* Wider signature line */
+    height: 2px;
+    background-color: #607d8b; /* Muted grey-blue for the line */
+    margin-bottom: 8px; /* Space between line and label */
+}
+
+#signature-pad-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#signature-pad-container label {
+    color: #607d8b; /* Muted color for label */
+    font-size: 0.9em; /* Slightly smaller label */
+    margin-bottom: 6px;
+    display: block;
+    font-style: italic;
+}
+
+#signature-pad {
+    border-radius: 8px; /* More rounded */
+    border: 1px solid #bbd2e5; /* Lighter, modern border */
+    background: #eef5f9; /* Light, clean background */
+    margin-top: 6px; /* Increased margin */
+    width: 280px; /* Match signature line width */
+    height: 100px; /* Example height for a signature area */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.cheque-form-submit-row {
+    text-align: right;
+    margin-top: 30px; /* More space for buttons */
+    position: relative;
+    z-index: 1;
+}
+
+.cheque-form-submit-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* Modern blue gradient */
+    color: #fff;
+    border: none;
+    border-radius: 9px; /* More rounded buttons */
+    padding: 12px 36px; /* More padding for a bolder button */
+    font-size: 1.1em; /* Slightly larger text */
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 600; /* Bolder text */
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.25); /* More prominent shadow */
+    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+}
+.cheque-form-submit-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #003f7f); /* Darker gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4); /* Enhanced shadow on hover */
+}
+.cheque-form-submit-btn:active {
+    transform: translateY(0); /* Press down effect */
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .cheque-form-cheque {
+        padding: 30px 25px 20px 25px;
+    }
+
+    .cheque-form-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .cheque-form-header-left::before {
+        font-size: 2em;
+    }
+
+    .cheque-form-header-left::after {
+        text-align: center;
+    }
+
+    .cheque-form-header-right {
+        align-items: center;
+    }
+
+    .cheque-form-amount {
+        font-size: 1.5em;
+    }
+
+    .amount-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cheque-form-signature-row {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #signature-pad-container {
+        align-items: center;
+    }
+
+    .signature-line, #signature-pad {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .cheque-form-submit-btn {
+        width: 100%;
+        padding: 12px 20px;
+    }
+}
